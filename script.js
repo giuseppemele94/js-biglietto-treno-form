@@ -29,11 +29,11 @@ form.addEventListener("submit", (e) => {
     e.preventDefault();
 
      const prezzo = calcolaPrezzo( distanceField.value , ageField.value); 
-     const discount = getStringDiscount(ageField.value); 
+     const stringDiscount = getStringDiscount(ageField.value); 
     
     //Parte di Output in tabella 
     userName.innerText = nameField.value; 
-    ageUser.innerText = discount  ; 
+    ageUser.innerText = stringDiscount ; 
     priceUser.innerText = prezzo.toFixed(2) + " €" ; 
 
      // gestione visibilità della card all'invio
@@ -45,21 +45,22 @@ form.addEventListener("submit", (e) => {
 
 // tasto annulla per ripulire i campi 
 btnAnnulla.addEventListener("click", () => {
+    previewCard.classList.add("d-none");
     form.reset(); 
 })
 
 
 // funzione per il calcolo del prezzo 
-function calcolaPrezzo(km, eta) {
+function calcolaPrezzo(km, age) {
 
     const pricePerKm = 0.21;
     let basicPrice = km * pricePerKm;
     let finalPrice;
     
 
-    if (eta === 'minorenne') {
+    if (age === 'minorenne') {
         finalPrice = basicPrice * 0.80;
-    } else if (eta === 'over65') {
+    } else if (age === 'over65') {
         finalPrice = basicPrice * 0.60;
     }
     else {
