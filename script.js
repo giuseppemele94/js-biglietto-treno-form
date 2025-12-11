@@ -7,9 +7,20 @@ const ageField = document.getElementById("age-field");
 const distanceField = document.getElementById("km-field");
 const output = document.getElementById("output");
 const btnAnnulla = document.getElementById("button-delete"); 
+
 //seleziono il form di riferimento 
 const form = document.querySelector('form');
 
+// seleziono la card
+const previewCard = document.querySelector(".card");
+
+// seleziono tutti gli elementi di pagina relativi ai campi
+const userName = document.getElementById("name"); 
+const ageUser = document.getElementById("offerta"); 
+const priceUser = document.getElementById("costo"); 
+
+// gestione visibilità iniziale della card
+previewCard.classList.add("d-none");
 
 //gestione dell'invio del form 
 form.addEventListener("submit", (e) => {
@@ -17,19 +28,18 @@ form.addEventListener("submit", (e) => {
     //blocco il comportamento di base del form 
     e.preventDefault();
 
+     const prezzo = calcolaPrezzo( distanceField.value , ageField.value); 
+     const discount = getStringDiscount(ageField.value); 
+    
+    //Parte di Output in tabella 
+    userName.innerText = nameField.value; 
+    ageUser.innerText = discount  ; 
+    priceUser.innerText = prezzo.toFixed(2) + " €" ; 
 
-    //prova di stampa in console log per vedere se aggancia i valori 
-    console.log(nameField.value, ageField.value, distanceField.value);
-
-
-    //prova di stampa in pagina 
-    const nameValue = nameField.value;
-    const ageValue = ageField.value;
-    const distanceValue = distanceField.value;
-    const prezzo = calcolaPrezzo( distanceField.value , ageField.value); 
-    output.innerHTML = `"Nome:"${nameValue} "Età: " ${ageValue} "Km: " ${distanceValue} "Prezzo: "${prezzo.toFixed(2)}`;
-
+     // gestione visibilità della card all'invio
+    previewCard.classList.remove("d-none");
     form.reset(); 
+
 });
 
 
@@ -57,3 +67,11 @@ function calcolaPrezzo(km, eta) {
     }
     return finalPrice ; 
 }
+
+function getStringDiscount (str) {
+ 
+    if(str === "minorenne" || str === "over65" ) {
+        return  "Biglietto scontato";
+    } else 
+        return "Biglietto standard ";
+    }
