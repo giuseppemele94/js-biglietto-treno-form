@@ -6,6 +6,7 @@ const nameField = document.getElementById("name-field");
 const ageField = document.getElementById("age-field");
 const distanceField = document.getElementById("km-field");
 const output = document.getElementById("output");
+const btnAnnulla = document.getElementById("button-delete"); 
 //seleziono il form di riferimento 
 const form = document.querySelector('form');
 
@@ -26,12 +27,16 @@ form.addEventListener("submit", (e) => {
     const ageValue = ageField.value;
     const distanceValue = distanceField.value;
     const prezzo = calcolaPrezzo( distanceField.value , ageField.value); 
-    output.innerHTML += `${nameValue} ${ageValue} ${distanceValue} "Prezzo : "${prezzo.toFixed(2)}`;
+    output.innerHTML = `"Nome:"${nameValue} "Età: " ${ageValue} "Km: " ${distanceValue} "Prezzo: "${prezzo.toFixed(2)}`;
 
-    
+    form.reset(); 
 });
 
 
+// tasto annulla per ripulire i campi 
+btnAnnulla.addEventListener("click", () => {
+    form.reset(); 
+})
 
 
 // funzione per il calcolo del prezzo 
