@@ -7,12 +7,75 @@
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css'
         integrity='sha512-b2QcS5SsA8tZodcDtGRELiGv5SaKSk1vDHDaQRda0htPYWZ6046lr3kJ5bAAQdpV2mmA/4v0wQF9MyU6/pDIAg=='
         crossorigin='anonymous' />
-    <title>Document</title>
+    <title>BigliettoTreno</title>
 </head>
 
 <body>
 
+    <div class="container mt-3">
+        <div class="row">
+            <div class="col-8">
+                <form action="">
+                    <div class="row g-3 ">
 
+                        <div class="col">
+                            <label for="name-field" class="form-label">Nome Completo</label>
+                            <input class="form-control" type="text" id="name-field" />
+                        </div>
+
+                        <div class="col">
+                            <label for="age-field" class="form-label">Età</label>
+                            <select id="age-field" class="form-select" required>
+                                <option value="">
+                                    <Titolo>Inserisci la tua età
+                                </option>
+                                <option value="maggiorenne">Maggiorenne</option>
+                                <option value="minorenne">Minorenne</option>
+                                <option value="over65">Over 65</option>
+                            </select>
+                        </div>
+
+                        <div class="col">
+                            <label for="km-field" class="form-label">Km da percorrere</label>
+                            <input class="form-control" type="number" id="km-field" step="any" required />
+                        </div>
+
+                        <div class="col-12 text-center">
+                            <button id="button" class="btn btn-primary ">Conferma</button>
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+
+            <div id="output" class="mt-4 fs-5"></div>
+
+
+            <!-- <div class="col-md-4">
+                <div class="card h-100">
+                    <div class="card-header" id="company">Company</div>
+                    <div class="card-body">
+                        <div class="row ">
+                            <div class="col-8">
+                                <blockquote class="blockquote mb-0">
+                                    <p><span id="title">Mr.</span><span id="name">Full Name</span></p>
+                                    <footer class="blockquote-footer"><cite id="role">Role</cite>
+                                    </footer>
+                                </blockquote>
+                                <ul class="list-unstyled">
+                                    <li><i class="bi bi-telephone-fill"></i> <span id="phone">0000000000000</span></li>
+                                    <li><i class="bi bi-envelope-at"></i> <span id="email">mail@example.it</span></li>
+                                </ul>
+                            </div>
+                            <div class="col-4">
+                                <img id="company-pic" class="img-fluid" src="" alt="company name">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+        </div>
+    </div>
     <script src="script.js"></script>
 </body>
 
